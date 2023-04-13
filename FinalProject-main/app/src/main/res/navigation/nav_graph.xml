@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeArticle">
+
+    <fragment
+        android:id="@+id/favorite_news"
+        android:name="com.example.webscrapping.view.favorite_news"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorite_news" >
+        <action
+            android:id="@+id/action_favorite_news_to_homeArticle"
+            app:destination="@id/homeArticle" />
+
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="content"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="sourceUrl"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_favorite_news_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <argument
+            android:name="ARTICLE"
+            app:argType="com.example.webscrapping.model.Article" />
+        <action
+            android:id="@+id/action_favorite_news_to_reading_Fragment"
+            app:destination="@id/reading_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeArticle"
+        android:name="com.example.webscrapping.view.HomeArticle"
+        android:label="@string/home" >
+        <action
+            android:id="@+id/action_homeArticle_to_favorite_news"
+            app:destination="@id/favorite_news" />
+        <action
+            android:id="@+id/action_homeArticle_to_reading_Fragment"
+            app:destination="@id/reading_Fragment" />
+        <action
+            android:id="@+id/action_homeArticle_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <argument
+            android:name="word"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.webscrapping.view.SettingsFragment"
+        android:label="@string/Settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_homeArticle"
+            app:destination="@id/homeArticle" />
+        <action
+            android:id="@+id/action_settingsFragment_to_favorite_news"
+            app:destination="@id/favorite_news" />
+        <action
+            android:id="@+id/action_settingsFragment_to_reading_Fragment"
+            app:destination="@id/reading_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reading_Fragment"
+        android:name="com.example.webscrapping.view.reading"
+        android:label="@string/reading"
+        tools:layout="@layout/fragment_reading" >
+
+
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_reading_Fragment_to_homeArticle"
+            app:destination="@id/homeArticle" />
+        <argument
+            android:name="content"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="sourceUrl"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_reading_Fragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_reading_Fragment_to_favorite_news"
+            app:destination="@id/favorite_news" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/aboutThisApp"
+        android:name="com.example.webscrapping.view.AboutThisApp"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about_this_app" />
+</navigation>
